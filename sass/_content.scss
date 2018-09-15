@@ -152,11 +152,12 @@
 .content{
     position: relative;
 }
+
+
 #top{
-bottom:5px;
-       right:5px;
+    bottom:0px;
+       right:0px;
        position: absolute;
-a{
     background-image: url(../img/icons_up-1.png);
     display: block;
    background-size:contain;
@@ -168,8 +169,7 @@ a{
        border: 2px solid #ff7575; 
        z-index: 1;
        }
-    a:hover{  
-       
+    #top:hover{  
        border: 2px dotted #000; 
        }
-}
+ 

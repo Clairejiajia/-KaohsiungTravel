@@ -44,23 +44,20 @@ function update(e) {
 };
 
 function hotIssue(e) {
-    // var select = e.target.value;
-    // var str = "";
-    // for (var i = 0; i < len; i++) {
-    //     if (select == areainfo[i].district) {
-    //         str += '<li>' + areainfo[i].name + '</li>';
-    //     };
-    // }; listEL.innerHTML = str;
-
-
+    e.preventDefault();
     var select = e.target.text;
     var str = "";
-    e.preventDefault();
-    areaTitle.textContent = select;
-    areaContent.innerHTML = "";
+
+   
     for (var i = 0; i < info.length; i++) {
-        if (select == info[i].Zone) {
-            str += '<div class="locationInfo"><div class="img w-100" style = "background-image:url(' + info[i].Picture1 + ')" >    <div class="title">' + info[i].Name + '</div>         <div class="shadow"> </div> </div > <div class="info">   <p class="mb-1 time"> <span class="icon-time">時間:</span>' + info[i].Opentime + '</p><p class="mb-1 address"><span class=" icon-add">地址:</span>' + info[i].Add + '</p >  <p class="mb-0 text-left mobile "><span class=" icon-tel">電話:</span>' + info[i].Tel + '</p> </div> </div>'
+        if (e.target.nodeName !== 'A') { 
+            return; 
+        } else {
+            if (select == info[i].Zone) {
+                areaTitle.textContent = select;
+                areaContent.innerHTML = "";
+                str += '<div class="locationInfo"><div class="img w-100" style = "background-image:url(' + info[i].Picture1 + ')" ><div class="title">' + info[i].Name + '</div><div class="shadow"> </div> </div > <div class="info">   <p class="mb-1 time"> <span class="icon-time">時間:</span>' + info[i].Opentime + '</p><p class="mb-1 address"><span class=" icon-add">地址:</span>' + info[i].Add + '</p >  <p class="mb-0 text-left mobile "><span class=" icon-tel">電話:</span>' + info[i].Tel + '</p> </div> </div>'
+            }
         };
     }; areaContent.innerHTML = str;
 };
@@ -71,12 +68,10 @@ selector.addEventListener('change', update, false);
 hotItem.addEventListener('click', hotIssue, false);
 
 // 滾動到頂部
-var top=document.querySelector('#top');
+var topLink = document.querySelector('#top');
 var target = document.querySelector('#mainvision')
 function gotoTOP(e) {
-    if (window.scrollTo) {
         e.preventDefault()
         window.scrollTo({ 'behavior': 'smooth', 'top': target.offsetTop })
-    }
 }
-top.addEventListener('click',gotoTOP,false);
+topLink.addEventListener('click', gotoTOP, false);
